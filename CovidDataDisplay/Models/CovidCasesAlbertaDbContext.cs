@@ -6,16 +6,16 @@ namespace CovidDataDisplay.Models;
 
 public partial class CovidCasesAlbertaDbContext : DbContext
 {
-    public CovidCasesAlbertaDbContext()
-    {
-    }
+    //public CovidCasesAlbertaDbContext()
+    //{
+    //}
 
     public CovidCasesAlbertaDbContext(DbContextOptions<CovidCasesAlbertaDbContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<Covid19AlbertaStatisticsDatum> Covid19AlbertaStatisticsData { get; set; } = null!;
+    public virtual DbSet<Covid19AlbertaStatisticsDatum> Covid19AlbertaStatisticsData { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -25,7 +25,7 @@ public partial class CovidCasesAlbertaDbContext : DbContext
     {
         modelBuilder.Entity<Covid19AlbertaStatisticsDatum>(entity =>
         {
-            entity.ToTable("covid-19-alberta-statistics-data");
+            entity.ToTable("StatisticsDataTable");
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()

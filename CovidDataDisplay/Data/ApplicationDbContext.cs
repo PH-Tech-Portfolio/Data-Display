@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CovidDataDisplay.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CovidDataDisplay.Data
 {
@@ -10,5 +11,7 @@ namespace CovidDataDisplay.Data
         {
 
         }
+
+        public DbSet<CovidCasesAlbertaDbContext> StatisticsDataTable { get; set; }
     }
 }

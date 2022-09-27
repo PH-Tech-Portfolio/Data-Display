@@ -1,3 +1,5 @@
+// Setting to global bc we are basically using everywhere
+global using Microsoft.EntityFrameworkCore;
 using CovidDataDisplay.Models;
 
 var builder = WebApplication.CreateBuilder(args);

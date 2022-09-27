@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CovidDataDisplay.Models;
 
 public partial class Covid19AlbertaStatisticsDatum
 {
+    [Key]
     public int Id { get; set; }
 
     public DateTime? DateReported { get; set; }
