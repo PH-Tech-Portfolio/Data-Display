@@ -1,8 +1,11 @@
+using CovidDataDisplay.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<CovidCasesAlbertaDbContext>();
 
 var app = builder.Build();
 
