@@ -8,19 +8,29 @@
     <h4>This is an example of a db first project. Data coming from <a href="https://www.alberta.ca/stats/covid-19-alberta-statistics.htm?aff_id=1262">alberta.ca</a></h4>
     <br />
 
+    <div class="container p-3">
+        <div class="col-6" >
+            <i class="bi bi-arrow-left-square-fill"> &nbsp; Previous Stuff</i>
+        </div>
+        <div class="col-6">
+            <i class="bi bi-arrow-right-square-fill"> &nbsp; Next Stuff</i>
+        </div>
+    </div>
     <table class="table table-hover table-bordered" style="width: 100%">
         <thead>
             <tr class="table-dark">
                 <th>ID:</th>
                 <th>Area:</th>
                 <th>Gender:</th>
+                <th>Age Group:</th>
+                <th>Disease Status:</th>
                 <th>Death Status:</th>
             </tr>
         </thead>
         <tbody>
             @{
                 // Creating object list for simpler communication
-                var _listOfModel = Model.ToList();
+                var _listOfModel = Model.OrderByDescending(m => m.DeathStatus == "Died").ToList();
 
                 // values for flipping through data
                 int _startVal = 0;
@@ -30,7 +40,7 @@
                 {
                         @if (i % 2 == 0)
                         {
-                            <tr {} class="table-primary">
+                            <tr class="table table-primary">
                                 <td>
                                     @_listOfModel[i].Id
                                 </td>
@@ -38,28 +48,39 @@
                                     @_listOfModel[i].AlbertaHealthServicesZone
                                 </td>
                                 <td>
-                                    Sex of: @_listOfModel[i].Gender
+                                    @if(_listOfModel[i].Gender=="Female")
+                                    {
+                                        <div>Sex of:<span style="color:deeppink"><i class="bi bi-gender-female"></i> @_listOfModel[i].Gender</span></div>
+                                    } else if(_listOfModel[i].Gender=="Male") {
+                                        <div>Sex of:<span style="color:deepskyblue"><i class="bi bi-gender-male"></i> @_listOfModel[i].Gender</span></div>
+                                    }
+                                </td>
+                                <td>
+                                    Age of: @_listOfModel[i].AgeGroup
+                                </td>
+                                <td>
+                                    @if (_listOfModel[i].AgeGroup=="Confirmed"){
+                                        <div class="text-danger">INFECTED</div>
+                                    } else {
+                                        <div class="text-danger">INFECTED</div>
+                                    }
                                 </td>
                                 <td>
                                     Status: @_listOfModel[i].DeathStatus
                                     @if(_listOfModel[i].DeathStatus=="Died"){
-                                        <i class="bi bi-hand-thumbs-down"></i>
+                                        <i style="color:red" class="bi bi-hand-thumbs-down"></i>
                                 }
                                 else if (_listOfModel[i].DeathStatus == "NA")
                                 {
                                         <i class="bi bi-question-circle"></i>
                                 } else {
-                                        <i class="bi bi-hand-thumbs-up"></i>
+                                        <i style="color:lawngreen" class="bi bi-hand-thumbs-up"></i>
                                 }
                                 </td>
                             </tr>
                         } else {
-
+                        
                         }
-
-                    
-
-
                 }
             }
         </tbody>
