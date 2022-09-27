@@ -14,12 +14,12 @@ namespace CovidDataDisplay.Controllers
             _context = contex;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetSomeData()
-        {
-            return Ok(await _context.Covid19AlbertaStatisticsData.ToListAsync());
+        //[HttpGet]
+        //public async Task<IActionResult> GetSomeData()
+        //{
+        //    return Ok(await _context.Covid19AlbertaStatisticsData.ToListAsync());
 
-        }
+        //}
 
         public IActionResult Index()
         {
@@ -37,5 +37,18 @@ namespace CovidDataDisplay.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
+
+        // Methods (probably not right way to do it but a simple temp fix for quick functionality
+        //public int NextItems(ref int count) => count += 100;
+        //public int PrevItems(ref int count) => count -= 100;
+        //[HttpPost]
+        //public IActionResult SomeMethod(int count)
+        //{
+        //    return View();
+        //}
+
     }
 }

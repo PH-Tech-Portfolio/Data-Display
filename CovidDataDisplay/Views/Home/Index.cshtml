@@ -1,6 +1,13 @@
 ﻿@model IEnumerable<Covid19AlbertaStatisticsDatum>
 @{
     ViewData["Title"] = "Home Page";
+
+    // Creating object list for simpler communication
+    var _listOfModel = Model.OrderByDescending(m => m.DeathStatus == "Died").ToList();
+
+    // values for flipping through data
+    int _startVal = 0;
+    int _endVal = 100;
 }
 
 <div class="text-center">
@@ -11,13 +18,34 @@
     <div class="container p-3">
         <div class="row">
             <div class="col-6 text-start">
-                <div class="btn btn-info">
+                <div input class="btn btn-info">
                     <i class="bi bi-arrow-left-square-fill"> &nbsp; Previous Stuff</i>
+                    @*@{
+                        if(_startVal<=0) {
+                            // Would be a great spot here 
+                            // to display an error message with toaster js or temp values or something
+                            _startVal -= 100;
+                            _endVal -= 100;
+                        }
+                    }*@
+
+                    @*Note: I could create something like this as a parcial view if wanted simpler*@
+
+                    
                 </div>
+                @*<form method="post">
+                    <button type="button" asp-page-handler="SomeMethod(5)">execute method</button>
+                </form>*@
             </div>
             <div class="col-6 text-end">
                 <div class="btn btn-info">
                     <i class="bi bi-arrow-right-square-fill"> &nbsp; Next Stuff</i>
+                    @*@{
+                        if(_endVal!>=_listOfModel.Count) {
+                            _startVal += 100;
+                            _endVal += 100;
+                        }
+                    }*@
                 </div>
             </div>
         </div>
@@ -37,55 +65,54 @@
         </thead>
         <tbody>
             @{
-                // Creating object list for simpler communication
-                var _listOfModel = Model.OrderByDescending(m => m.DeathStatus == "Died").ToList();
+                
 
                 // values for flipping through data
-                int _startVal = 0;
-                int _endVal = 100;
+                _startVal = 0;
+                _endVal = 100;
 
                 for (int i = _startVal; i < _endVal; i++)
                 {
-                        @if (i % 2 == 0)
+                            @if (i % 2 == 0)
                         {
-                            <tr class="table table-primary">
-                                <td>
-                                    @_listOfModel[i].Id
-                                </td>
-                                <td>
-                                    @_listOfModel[i].AlbertaHealthServicesZone
-                                </td>
-                                <td>
-                                    @if(_listOfModel[i].Gender=="Female")
+                                <tr class="table table-primary">
+                                    <td>
+                                        @_listOfModel[i].Id
+                                    </td>
+                                    <td>
+                                        @_listOfModel[i].AlbertaHealthServicesZone
+                                    </td>
+                                    <td>
+                                        @if(_listOfModel[i].Gender=="Female")
                                     {
-                                        <div>Sex of:<span style="color:deeppink"><i class="bi bi-gender-female"></i> @_listOfModel[i].Gender</span></div>
+                                            <div>Sex of:<span style="color:deeppink"><i class="bi bi-gender-female"></i> @_listOfModel[i].Gender</span></div>
                                     } else if(_listOfModel[i].Gender=="Male") {
-                                        <div>Sex of:<span style="color:deepskyblue"><i class="bi bi-gender-male"></i> @_listOfModel[i].Gender</span></div>
+                                            <div>Sex of:<span style="color:deepskyblue"><i class="bi bi-gender-male"></i> @_listOfModel[i].Gender</span></div>
                                     }
-                                </td>
-                                <td>
-                                    Age of: @_listOfModel[i].AgeGroup
-                                </td>
-                                <td>
-                                    @if (_listOfModel[i].AgeGroup=="Confirmed"){
-                                        <div class="text-danger">INFECTED</div>
+                                    </td>
+                                    <td>
+                                        Age of: @_listOfModel[i].AgeGroup
+                                    </td>
+                                    <td>
+                                        @if (_listOfModel[i].AgeGroup=="Confirmed"){
+                                            <div class="text-danger">INFECTED</div>
                                     } else {
-                                        <div class="text-danger">INFECTED</div>
+                                            <div class="text-danger">INFECTED</div>
                                     }
-                                </td>
-                                <td>
-                                    Status: @_listOfModel[i].DeathStatus
-                                    @if(_listOfModel[i].DeathStatus=="Died"){
-                                        <i style="color:red" class="bi bi-hand-thumbs-down"></i>
+                                    </td>
+                                    <td>
+                                        Status: @_listOfModel[i].DeathStatus
+                                        @if(_listOfModel[i].DeathStatus=="Died"){
+                                            <i style="color:red" class="bi bi-hand-thumbs-down"></i>
                                 }
                                 else if (_listOfModel[i].DeathStatus == "NA")
                                 {
-                                        <i class="bi bi-question-circle"></i>
+                                            <i class="bi bi-question-circle"></i>
                                 } else {
-                                        <i style="color:lawngreen" class="bi bi-hand-thumbs-up"></i>
+                                            <i style="color:lawngreen" class="bi bi-hand-thumbs-up"></i>
                                 }
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                         } else {
                         
                         }
