@@ -19,5 +19,8 @@ Note: I am like 95% sure that I have to have docker running on local machine bc 
 ![image](https://user-images.githubusercontent.com/70828342/192597122-669686a6-7ad8-4e51-aef0-7c3ee76eca6f.png)
 ![image](https://user-images.githubusercontent.com/70828342/192597180-9ad28ea2-cda0-4115-8637-6ad8e118667a.png)
 
+^^^Only showing ~100 records in table. There is like 60k but I have to work on a way to go through em. 
+Currently working on calling non iaction methods on a button click. Not sure if that makes sence but am looking into it and will update!
+
 
 Will add more later. Videos took a bit to go through but was able to create this in morning...
