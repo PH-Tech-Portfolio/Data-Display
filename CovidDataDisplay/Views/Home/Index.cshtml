@@ -6,8 +6,38 @@
 <div class="text-center">
     <h1 class="display-4">Testing db first</h1>
     <p>Learn about building Web apps with ASP.NET Core</a>.</p>
-    @foreach (var obj in Model)
-    {
-        <p>@obj.Gender</p>
-    }
+    <table>
+        <thead>
+            <tr>
+                <th>ID:</th>
+                <th>Gender:</th>
+                <th>Death Status:</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var _listOfModel = Model.ToList();
+                for (int i = 0; i < 20; i++)
+                {
+                    <tr>
+                        <td>
+                            @_listOfModel[i].Id
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @_listOfModel[i].Gender
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @_listOfModel[i].DeathStatus
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    
+
 </div>
