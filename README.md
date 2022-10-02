@@ -1,5 +1,7 @@
 # Data-Display
 
+![cat-computer](https://user-images.githubusercontent.com/70828342/193475639-3745f1dc-19d2-4b2c-87ba-c00cb8e261a4.gif)
+
 Followed 2 tutorials to learn some asp net. 
 
 1. https://youtu.be/hZ1DASYd9rk
