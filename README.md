@@ -7,6 +7,17 @@ Followed 2 tutorials to learn some asp net.
 
 ^^^ Both up to date great tutorials. I highly reccomend!
 
+## Included samples of (exposure to):
+* Entity Framework
+* SQL
+* SSMS (Sql Server Management Studio (Microsoft))
+* C#
+* Asp.Net
+* MCV (Model View Controller)
+* HTML && CSS
+* Bootstrap && Bootswatch
+* Docker
+
 ## What I did?
 One was a intro kinda course. The other was a db first asp net YT video. I took the information I learned after watching (A FEW) times, following along, and then creating my own unique version how I wanted :-)
 
